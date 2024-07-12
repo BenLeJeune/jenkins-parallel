@@ -33,5 +33,9 @@ node {
     }
     stage('Cleanup') {
         echo 'Cleaning up after the parallel stages are done!'
+        sh '''
+            source venv/bin/activate
+            python3 end.py
+        '''
     }
 }
