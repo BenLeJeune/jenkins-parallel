@@ -1,4 +1,7 @@
 node {
+    stage('Pre-Start') {
+        sh 'ls'
+    }
     stage('Start') {
         echo 'Running the startup Python script'
         sh 'python3 start.py'
