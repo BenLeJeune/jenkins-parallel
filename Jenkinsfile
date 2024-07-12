@@ -9,12 +9,16 @@ node {
             pip install -r requirements.txt
         '''
     }
-    stage('Start') {
-        echo 'Running the startup Python script'
-        sh '''
-            source venv/bin/activate
-            python3 start.py
-        '''
+    stage('Authenticated') {
+        withCredentials([string(credentialsId: 'parallel-login', variable: 'login')]) {
+            stage('Start') {
+                echo 'Running the startup Python script'
+                sh '''
+                    source venv/bin/activate
+                    python3 start.py
+                '''
+            }
+        }
     }
     def projects = [:]
     readCSV(file: "projects.csv").each { line ->

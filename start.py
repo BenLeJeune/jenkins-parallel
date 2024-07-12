@@ -14,3 +14,7 @@ try:
     os.mkdir('tmp')
 except Exception as e:
     print(f"An error occurred while creating the /tmp/ directory: {e}")
+
+
+print("Trying to access login details:")
+print(os.getenv('login'))
