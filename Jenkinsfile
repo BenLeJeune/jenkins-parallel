@@ -1,6 +1,7 @@
 node {
-    stage('Hello') {
-        echo 'Hello World'
+    stage('Start') {
+        echo 'Running the startup Python script'
+        sh 'python3 start.py'
     }
     stage('Parallel') {
         parallel(
