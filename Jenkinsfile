@@ -23,7 +23,7 @@ node {
             stage(proj_name) {
                 sh """
                     source venv/bin/activate
-                    python3 project.py ${proj_name} 
+                    python3 project.py '${proj_name}'
                 """
             }
         }
