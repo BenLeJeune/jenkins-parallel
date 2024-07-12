@@ -17,7 +17,7 @@ node {
         '''
     }
     def projects = [:]
-    readCSV(file: "/tmp/MyCSV.csv").each { line ->
+    readCSV(file: "projects.csv").each { line ->
         def proj_name = line[0]
         projects[proj_name] = {
             stage(proj_name) {
