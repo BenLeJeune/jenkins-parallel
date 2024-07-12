@@ -21,7 +21,10 @@ node {
         def proj_name = line[0]
         projects[proj_name] = {
             stage(proj_name) {
-                echo proj_name
+                sh '''
+                    source venv/bin/activate
+                    python3 project.py ${proj_name} 
+                '''
             }
         }
     }  
