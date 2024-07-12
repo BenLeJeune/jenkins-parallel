@@ -1,6 +1,6 @@
 node {
-    stage('Pre-Start') {
-        sh 'ls'
+    stage('Checkout SCM') {
+        checkout scm
     }
     stage('Start') {
         echo 'Running the startup Python script'
