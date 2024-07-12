@@ -16,5 +16,5 @@ except Exception as e:
     print(f"An error occurred while creating the /tmp/ directory: {e}")
 
 
-print("Trying to access login details:")
-print(os.getenv('login'))
+print(f"Username: {os.getenv('USERNAME')}")
+print(f"Password: {os.getenv('PASSWORD')}")

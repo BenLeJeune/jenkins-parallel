@@ -10,7 +10,7 @@ node {
         '''
     }
     stage('Authenticated') {
-        withCredentials([string(credentialsId: 'parallel-login', variable: 'login')]) {
+withCredentials([usernamePassword(credentialsId: 'parallel-login', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
             stage('Start') {
                 echo 'Running the startup Python script'
                 sh '''
