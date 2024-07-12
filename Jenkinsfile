@@ -16,19 +16,17 @@ node {
             python3 start.py
         '''
     }
-    stage('Parallel') {
-        parallel(
-            stage1: {
-                stage('First parallel stage') {
-                    echo 'Stage 1 here!'
-                }
-            },
-            stage2: {
-                stage('Second parallel stage') {
-                    echo 'Stage 2 here!'
-                }
+    def projects = [:]
+    readCSV(file: "/tmp/MyCSV.csv").each { line ->
+        def proj_name = line[0]
+        projects[proj_name] = {
+            stage(proj_name) {
+                echo proj_name
             }
-        )
+        }
+    }  
+    stage('Parallel') {
+        parallel projects
     }
     stage('Cleanup') {
         echo 'Cleaning up after the parallel stages are done!'
